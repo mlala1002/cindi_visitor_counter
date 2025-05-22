@@ -84,7 +84,7 @@
 </head>
 <body>
   <div class="container">
-    <iframe src="https://script.google.com/macros/s/AKfycbyHnS_Q3ukUS9pTw2poDzWw0dRvGoS_IRftshlmJuf3RjhejwziriyBZvnDOghfTzBh/exec"></iframe>
+    <iframe src="https://script.google.com/macros/s/AKfycbx1xvQVsLbSxeQVVW2X-RROWESqP6guRJtRpPRZZHGJLQjnK3JoWfSt_gDQQqnZEuy2/exec"></iframe>
     <div class="cover">
       <div id="cell-value">
         <span class="label">Today's Visit:</span>
@@ -94,7 +94,7 @@
   </div>
 
   <script>
-    fetch("https://script.google.com/macros/s/AKfycbyHnS_Q3ukUS9pTw2poDzWw0dRvGoS_IRftshlmJuf3RjhejwziriyBZvnDOghfTzBh/exec?mode=get")
+    fetch("https://script.google.com/macros/s/AKfycbx1xvQVsLbSxeQVVW2X-RROWESqP6guRJtRpPRZZHGJLQjnK3JoWfSt_gDQQqnZEuy2/exec?mode=get")
       .then(res => res.json())
       .then(data => {
         document.querySelector("#cell-value .number").innerText = data.value;
