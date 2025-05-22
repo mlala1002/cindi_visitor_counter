@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>CINDI - Notion Guide Visitor Counter</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: white;
+      color: #222;
+    }
+
+    /* 다크 모드 대응 */
+    @media (prefers-color-scheme: dark) {
+      html, body {
+        background-color: #191919;
+        color: #eee;
+      }
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      z-index: 10;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .cover {
+        background-color: #191919;
+      }
+    }
+
+    #cell-value {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 50px;
+      padding: 0.3rem 1rem;
+      background-color: rgba(255, 93, 91, 0.8);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #cell-value {
+        background-color: rgba(255, 93, 91, 0.8);
+      }
+    }
+
+    .label, .number {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000; /* 텍스트를 항상 검정색으로 고정 */
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <iframe src="https://script.google.com/macros/s/AKfycbyHnS_Q3ukUS9pTw2poDzWw0dRvGoS_IRftshlmJuf3RjhejwziriyBZvnDOghfTzBh/exec"></iframe>
+    <div class="cover">
+      <div id="cell-value">
+        <span class="label">Today's Visit:</span>
+        <span class="number">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbyHnS_Q3ukUS9pTw2poDzWw0dRvGoS_IRftshlmJuf3RjhejwziriyBZvnDOghfTzBh/exec?mode=get")
+      .then(res => res.json())
+      .then(data => {
+        document.querySelector("#cell-value .number").innerText = data.value;
+      })
+      .catch(err => {
+        document.querySelector("#cell-value .number").innerText = "Fail";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
